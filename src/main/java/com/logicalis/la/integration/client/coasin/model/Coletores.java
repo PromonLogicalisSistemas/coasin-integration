@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019. Flavio Regis de Arruda <flavio.arruda@gmail.com>.
+ */
+
 package com.logicalis.la.integration.client.coasin.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
