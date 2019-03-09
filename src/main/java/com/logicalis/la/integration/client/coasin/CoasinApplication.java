@@ -6,6 +6,7 @@
 package com.logicalis.la.integration.client.coasin;
 
 import com.logicalis.la.integration.client.coasin.service.ColetoresServiceClient;
+import com.logicalis.la.integration.client.coasin.service.EscalasServiceClient;
 import com.logicalis.la.integration.client.coasin.service.FuncionariosServiceClient;
 import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class CoasinApplication {
     @Autowired
     private FuncionariosServiceClient funcionariosClient;
 
+    @Autowired
+    private EscalasServiceClient escalasClient;
+
     public static void main(String[] args) {
         new SpringApplicationBuilder(CoasinApplication.class).web(WebApplicationType.NONE).run(args);
     }
@@ -49,7 +53,7 @@ public class CoasinApplication {
             } else if ("funcionarios".equals(args[0].toLowerCase())) {
                 funcionariosClient.run();
             } else if ("escalas".equals(args[0].toLowerCase())) {
-
+                escalasClient.run();
             } else {
                 String msg = "Argumento " + args[0] + " não reconhecido, encerrando imediatamente";
                 log.warn(msg);
