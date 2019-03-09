@@ -8,7 +8,7 @@ import com.logicalis.la.integration.client.coasin.CoasinApplication;
 import com.logicalis.la.integration.client.coasin.model.Coletores;
 import org.assertj.core.api.BDDAssertions;
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,7 +30,7 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 @SpringBootTest(classes = CoasinApplication.class)
 @RunWith(SpringRunner.class)
-class ColetoresServiceClientTest {
+public class ColetoresServiceClientTest {
 
     private Resource coletores = new ClassPathResource("coletores.json");
 
@@ -46,11 +46,8 @@ class ColetoresServiceClientTest {
     private String url;
 
     @Before
-    public void before() {
-        System.out.println("***** BEGIN BEFORE ************");
+    public void setUp() {
         this.mockRestServiceServer = MockRestServiceServer.bindTo(this.restTemplate).build();
-        System.out.println("***** END BEFORE ************");
-
     }
 
 
@@ -58,7 +55,6 @@ class ColetoresServiceClientTest {
     public void shouldReturnAllColetores() {
         BDDAssertions.then(this.coletores).isNotNull();
         BDDAssertions.then(this.restTemplate).isNotNull();
-        this.mockRestServiceServer = MockRestServiceServer.bindTo(this.restTemplate).build();
         BDDAssertions.then(this.mockRestServiceServer).isNotNull();
 
         this.mockRestServiceServer.expect(ExpectedCount.manyTimes(), requestTo(url))
