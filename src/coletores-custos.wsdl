@@ -1,0 +1,122 @@
+<definitions xmlns:tns="http://rd.la.logicalis.com/web-service/coletores-custos"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/"
+             name="WebServiceSapService" targetNamespace="http://rd.la.logicalis.com/web-service/coletores-custos">
+    <types>
+        <xsd:schema targetNamespace="http://rd.la.logicalis.com/web-service/coletores-custos">
+            <xsd:element name="coletoresCustos">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="coletorCusto" type="tns:coletorCusto" minOccurs="1" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:complexType name="coletorCusto">
+                <xsd:sequence>
+                    <xsd:element name="centro_custo" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xsd:element name="ordem_interna" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xsd:element name="elemento_pep" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xsd:element name="tipo" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="descricao" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="registro_gestor" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="id_empresa_totvs" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="situacao" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xsd:element name="excluido" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="registro_solicitante" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="coletoresCustosResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="coletoresCustosResult" type="xsd:boolean"/>
+                        <xsd:element name="msgError" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="enviaContaCorrenteConbilizacao">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="data" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                        <xsd:element name="pais" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                        <xsd:element name="id_empresa_totvs" type="xsd:string" minOccurs="0" maxOccurs="1"
+                                     nillable="true"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="enviaContaCorrenteConbilizacaoResponses">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="enviaContaCorrenteConbilizacaoResponse"
+                                     type="tns:enviaContaCorrenteConbilizacaoResponse" minOccurs="1"
+                                     maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:complexType name="enviaContaCorrenteConbilizacaoResponse">
+                <xsd:sequence>
+                    <xsd:element name="registro" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="qtde_horas" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="coletor_custo" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="tipo" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="data_competencia" type="xsd:date" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="data_modificacao" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </types>
+    <portType name="WebServiceSapServicePort">
+        <operation name="coletoresCustos">
+            <documentation>Serviço para receber coletores de custos do SAP</documentation>
+            <input message="tns:coletoresCustosIn"/>
+            <output message="tns:coletoresCustosOut"/>
+        </operation>
+        <operation name="enviaContaCorrenteConbilizacao">
+            <documentation>Serviço para enviar coletores de custos para SAP</documentation>
+            <input message="tns:enviaContaCorrenteConbilizacaoIn"/>
+            <output message="tns:enviaContaCorrenteConbilizacaoOut"/>
+        </operation>
+    </portType>
+    <binding name="WebServiceSapServiceBinding" type="tns:WebServiceSapServicePort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="coletoresCustos">
+            <soap:operation
+                    soapAction="http://ts-dev.br.promonlogicalis.com/web-service/coletores-custos#coletoresCustos"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="enviaContaCorrenteConbilizacao">
+            <soap:operation
+                    soapAction="http://ts-dev.br.promonlogicalis.com/web-service/coletores-custos#enviaContaCorrenteConbilizacao"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="WebServiceSapServiceService">
+        <port name="WebServiceSapServicePort" binding="tns:WebServiceSapServiceBinding">
+            <soap:address location="http://ts-dev.br.promonlogicalis.com/web-service/coletores-custos"/>
+        </port>
+    </service>
+    <message name="coletoresCustosIn">
+        <part name="parameters" element="tns:coletoresCustos"/>
+    </message>
+    <message name="coletoresCustosOut">
+        <part name="parameters" element="tns:coletoresCustosResponse"/>
+    </message>
+    <message name="enviaContaCorrenteConbilizacaoIn">
+        <part name="parameters" element="tns:enviaContaCorrenteConbilizacao"/>
+    </message>
+    <message name="enviaContaCorrenteConbilizacaoOut">
+        <part name="parameters" element="tns:enviaContaCorrenteConbilizacaoResponses"/>
+    </message>
+</definitions>

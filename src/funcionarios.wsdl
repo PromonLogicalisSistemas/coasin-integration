@@ -1,0 +1,163 @@
+<definitions xmlns:tns="http://rd.la.logicalis.com/web-service/funcionarios"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/"
+             name="WebServiceTotvsService" targetNamespace="http://rd.la.logicalis.com/web-service/funcionarios">
+    <types>
+        <xsd:schema targetNamespace="http://rd.la.logicalis.com/web-service/funcionarios">
+            <xsd:element name="funcionarios">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="funcionario" type="tns:funcionario" minOccurs="1" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:complexType name="funcionario">
+                <xsd:sequence>
+                    <xsd:element name="registro" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="nome" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="apelido" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xsd:element name="email" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="data_nascimento" type="xsd:date" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="endereco" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xsd:element name="bairro" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xsd:element name="complemento" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xsd:element name="cep" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xsd:element name="ramal" type="xsd:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xsd:element name="rg" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="cpf" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xsd:element name="pis" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xsd:element name="data_admissao" type="xsd:date" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="data_demissao" type="xsd:date" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xsd:element name="id_cidade_funcionario_totvs" type="xsd:int" minOccurs="0" maxOccurs="1"
+                                 nillable="true"/>
+                    <xsd:element name="registro_gestor" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xsd:element name="apontamento_via_relogio_ponto" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="id_cargo_totvs" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="descricao_cargo_totvs" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="cargo_confianca" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="codigo_categoria_horaria" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="descricao_categoria_horaria" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="codigo_lotacao" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="descricao_lotacao" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="id_localidade_base_totvs" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="nome_localidade" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="cep_localidade" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="id_cidade_localidade_totvs" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="nome_cidade_localidade" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="id_uf_localidade_totvs" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="nome_uf_localidade" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="sigla_uf_localidade" type="xsd:string" minOccurs="0" maxOccurs="1"
+                                 nillable="true"/>
+                    <xsd:element name="endereco_localidade" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="bairro_localidade" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="numero_localidade" type="xsd:string" minOccurs="0" maxOccurs="1"
+                                 nillable="true"/>
+                    <xsd:element name="complemento_localidade" type="xsd:string" minOccurs="0" maxOccurs="1"
+                                 nillable="true"/>
+                    <xsd:element name="cnpj" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+
+                    <xsd:element name="id_disciplina_totvs" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="descricao_disciplina" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="id_empresa_totvs" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="descricao_empresa" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="id_pais_localidade_totvs" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="nome_localidade_pais" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="locale_pais" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="funcionariosResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="funcionariosResult" type="xsd:boolean"/>
+                        <xsd:element name="msgError" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="escalas">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="escala" type="tns:escala" minOccurs="1" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:complexType name="escala">
+                <xsd:sequence>
+                    <xsd:element name="registro" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="mes_periodo" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="ano_periodo" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="dia" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="tipo_dia" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="inicio_jornada" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="fim_jornada" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="escalasResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="escalasResult" type="xsd:boolean"/>
+                        <xsd:element name="msgError" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+    <portType name="WebServiceTotvsServicePort">
+        <operation name="funcionarios">
+            <documentation>Serviço para receber funcionários do TOTVS</documentation>
+            <input message="tns:funcionariosIn"/>
+            <output message="tns:funcionariosOut"/>
+        </operation>
+        <operation name="escalas">
+            <documentation>Serviço para receber as escalas dos funcionários</documentation>
+            <input message="tns:escalasIn"/>
+            <output message="tns:escalasOut"/>
+        </operation>
+    </portType>
+    <binding name="WebServiceTotvsServiceBinding" type="tns:WebServiceTotvsServicePort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="funcionarios">
+            <soap:operation soapAction="http://ts-dev.br.promonlogicalis.com/web-service/funcionarios#funcionarios"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="escalas">
+            <soap:operation soapAction="http://ts-dev.br.promonlogicalis.com/web-service/funcionarios#escalas"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="WebServiceTotvsServiceService">
+        <port name="WebServiceTotvsServicePort" binding="tns:WebServiceTotvsServiceBinding">
+            <soap:address location="http://ts-dev.br.promonlogicalis.com/web-service/funcionarios"/>
+        </port>
+    </service>
+    <message name="funcionariosIn">
+        <part name="parameters" element="tns:funcionarios"/>
+    </message>
+    <message name="funcionariosOut">
+        <part name="parameters" element="tns:funcionariosResponse"/>
+    </message>
+    <message name="escalasIn">
+        <part name="parameters" element="tns:escalas"/>
+    </message>
+    <message name="escalasOut">
+        <part name="parameters" element="tns:escalasResponse"/>
+    </message>
+</definitions>

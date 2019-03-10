@@ -62,4 +62,5 @@ public class CoasinApplication {
             /* SpringApplication.exit(context); */
         };
     }
+
 }
