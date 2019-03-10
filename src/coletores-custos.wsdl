@@ -1,3 +1,7 @@
+<!--
+  ~ Copyright (c) 2019. Flavio Regis de Arruda <flavio.arruda@gmail.com>.
+  -->
+
 <definitions xmlns:tns="http://rd.la.logicalis.com/web-service/coletores-custos"
              xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
              xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/"
