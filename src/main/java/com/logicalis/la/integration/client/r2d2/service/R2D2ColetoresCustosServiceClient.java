@@ -20,7 +20,7 @@ public class R2D2ColetoresCustosServiceClient extends BaseServiceClient {
         log.info("Sending " + coletoresCustos.getColetorCusto().size() + " coletoresCustos");
 
         ColetoresCustosResponse response = (ColetoresCustosResponse) getWebServiceTemplate()
-                .marshalSendAndReceive("http://ts-dev.br.promonlogicalis.com/web-service/coletoresCustos-custos",
+                .marshalSendAndReceive("http://ts-dev.br.promonlogicalis.com/web-service/coletores-custos",
                         coletoresCustos);
 
         log.info("Sent successfully! Got ColetoresCustosResponse = " + response.getMsgError() + ", result = " + response.isColetoresCustosResult());

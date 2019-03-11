@@ -107,14 +107,6 @@ public class EscalasServiceClient extends BaseServiceClient {
         return new EscalasCoasinToR2D2();
     }
 
-//    @Bean
-//    public Jaxb2Marshaller marshaller() {
-//        Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-//        // this package must match the package in the <generatePackage> specified in
-//        // pom.xml
-//        marshaller.setContextPath("com.logicalis.la.integration.client.r2d2");
-//        return marshaller;
-//    }
 
     @Bean
     public R2D2EscalasServiceClient r2d2EscalasServiceClient(Jaxb2Marshaller marshaller) {
