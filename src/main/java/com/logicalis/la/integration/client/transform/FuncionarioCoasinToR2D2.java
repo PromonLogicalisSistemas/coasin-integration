@@ -76,13 +76,14 @@ public class FuncionarioCoasinToR2D2 implements Transformer<Funcionario, com.log
         to.setIdCidadeFuncionarioTotvs(factory.createFuncionarioIdCidadeFuncionarioTotvs(id_cidade.hashCode()));
         // Id Cidade Localidade
         to.setIdCidadeLocalidadeTotvs(id_cidade.hashCode());
-        to.setIdDisciplinaTotvs(Integer.parseInt(from.getId_disciplina_totvs()));
+        //to.setIdDisciplinaTotvs(Integer.parseInt(from.getId_disciplina_totvs()));
+        to.setIdDisciplinaTotvs(99999999);
         to.setIdEmpresaTotvs(from.getId_empresa_totvs());
         to.setIdLocalidadeBaseTotvs(from.getId_empresa_totvs() + "_" + 1); // ID LEGADO NA TAB. LOCALIDADE DO RD!
         to.setIdCidadeLocalidadeTotvs(from.getNome_cidade_localidade().hashCode());
         to.setIdPaisLocalidadeTotvs(from.getNome_localidade_pais().hashCode());
         to.setIdUfLocalidadeTotvs(from.getNome_uf_localidade().hashCode());
-        to.setLocalePais(from.getLocale_pais());
+        to.setLocalePais(/*from.getLocale_pais()*/"es");
         to.setNome(from.getNome());
         to.setNomeCidadeLocalidade(from.getNome_cidade_localidade());
         to.setNomeLocalidade(from.getNome_cidade_localidade());
@@ -115,7 +116,7 @@ public class FuncionarioCoasinToR2D2 implements Transformer<Funcionario, com.log
             try {
 
                 com.logicalis.la.integration.client.r2d2.Funcionario coringa = this.transform(last);
-                coringa.setNome("CL Prublas");
+                coringa.setNome("CoasinLogicalis Prueblas");
                 JAXBElement<String> apelido = coringa.getApelido();
                 apelido.setValue("CL Pruebas");
                 coringa.setApelido(apelido);
