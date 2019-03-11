@@ -10,6 +10,7 @@ import com.logicalis.la.integration.client.r2d2.ObjectFactory;
 import org.apache.commons.logging.Log;
 import org.springframework.stereotype.Service;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.datatype.DatatypeFactory;
 import java.text.Normalizer;
 import java.util.List;
@@ -101,13 +102,33 @@ public class FuncionarioCoasinToR2D2 implements Transformer<Funcionario, com.log
     public com.logicalis.la.integration.client.r2d2.Funcionarios transformAll(Funcionarios funcionarios) {
         com.logicalis.la.integration.client.r2d2.Funcionarios resp = new com.logicalis.la.integration.client.r2d2.Funcionarios();
         List<com.logicalis.la.integration.client.r2d2.Funcionario> funcionarioList = resp.getFuncionario();
+        Funcionario last = null;
         for (Funcionario coasin : funcionarios.getFuncionarios()) {
             try {
                 funcionarioList.add(this.transform(coasin));
+                last = coasin;
             } catch (Exception e) {
                 log.error(e);
             }
         }
+        if (last != null) {
+            try {
+
+                com.logicalis.la.integration.client.r2d2.Funcionario coringa = this.transform(last);
+                coringa.setNome("CL Prublas");
+                JAXBElement<String> apelido = coringa.getApelido();
+                apelido.setValue("CL Pruebas");
+                coringa.setApelido(apelido);
+                coringa.setEmail("clpruebas@coasinlogicalis.com");
+                coringa.setRegistro("200999");
+                funcionarioList.add(coringa);
+
+            } catch (Exception e) {
+                log.error(e);
+            }
+        }
+
+
         return resp;
     }
 

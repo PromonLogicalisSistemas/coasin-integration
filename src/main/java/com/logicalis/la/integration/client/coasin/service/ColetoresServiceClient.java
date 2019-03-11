@@ -26,7 +26,10 @@ import java.util.Optional;
 public class ColetoresServiceClient extends BaseServiceClient {
 
     @Value("${coasin.ws.coletores.url}")
-    private String url;
+    private String urlCoasin;
+
+    @Value("${r2d2.ws.coletores.url}")
+    private String urlR2D2;
 
     @Autowired
     ColetoresCoasinToR2D2 coletoresTransformer;
@@ -76,8 +79,7 @@ public class ColetoresServiceClient extends BaseServiceClient {
     Optional<Coletores> getColetores() {
         //new ParameterizedTypeReference<List<Coletor>>() {});
         return Optional.ofNullable(restTemplate.exchange(
-                url,
-                //"http://apiinterno.coasin.cl/ProxyR2D2/Service/CargaColetores",
+                urlCoasin,
                 HttpMethod.GET,
                 httpEntity,
                 Coletores.class).getBody());
@@ -93,7 +95,7 @@ public class ColetoresServiceClient extends BaseServiceClient {
     @Bean
     public R2D2ColetoresCustosServiceClient r2d2ColetoresCustosServiceClient(@Lazy Jaxb2Marshaller marshaller) {
         R2D2ColetoresCustosServiceClient client = new R2D2ColetoresCustosServiceClient();
-        client.setDefaultUri("http://ts-dev.br.promonlogicalis.com/web-service/coletores-custos");
+        client.setDefaultUri(urlR2D2);
         client.setMarshaller(marshaller);
         client.setUnmarshaller(marshaller);
         return client;

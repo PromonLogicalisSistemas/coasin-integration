@@ -36,9 +36,12 @@ public class EscalasServiceClient extends BaseServiceClient {
     @Autowired
     HttpEntity httpEntity;
     private Log log = org.apache.commons.logging.LogFactory.getLog(EscalasServiceClient.class);
+
     @Value("${coasin.ws.escalas.url}")
     private String url;
 
+    @Value("${r2d2.ws.escalas.url}")
+    private String urlR2D2;
 
     @Override
     public void run() {
@@ -111,7 +114,7 @@ public class EscalasServiceClient extends BaseServiceClient {
     @Bean
     public R2D2EscalasServiceClient r2d2EscalasServiceClient(Jaxb2Marshaller marshaller) {
         R2D2EscalasServiceClient client = new R2D2EscalasServiceClient();
-        client.setDefaultUri("http://ts-dev.br.promonlogicalis.com/web-service/escalas");
+        client.setDefaultUri(urlR2D2);
         client.setMarshaller(marshaller);
         client.setUnmarshaller(marshaller);
         return client;

@@ -10,6 +10,7 @@ import com.logicalis.la.integration.client.r2d2.service.R2D2FuncionariosServiceC
 import com.logicalis.la.integration.client.transform.FuncionarioCoasinToR2D2;
 import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -22,6 +23,13 @@ import java.util.Optional;
 
 @Service
 public class FuncionariosServiceClient extends BaseServiceClient {
+
+
+    @Value("${coasin.ws.funcionarios.url}")
+    private String urlCoasin;
+
+    @Value("${r2d2.ws.funcionarios.url}")
+    private String urlR2D2;
 
     @Autowired
     FuncionarioCoasinToR2D2 funcionariosTransformer;
@@ -72,7 +80,7 @@ public class FuncionariosServiceClient extends BaseServiceClient {
     Optional<Funcionarios> getFuncionarios() {
         //new ParameterizedTypeReference<List<Coletor>>() {});
         return Optional.ofNullable(restTemplate.exchange(
-                "http://apiinterno.coasin.cl/ProxyR2D2/Service/GetFuncionarios",
+                urlCoasin,
                 HttpMethod.GET,
                 httpEntity,
                 Funcionarios.class).getBody());
@@ -96,7 +104,7 @@ public class FuncionariosServiceClient extends BaseServiceClient {
     @Bean
     public R2D2FuncionariosServiceClient r2d2FuncionariosServiceClient(Jaxb2Marshaller marshaller) {
         R2D2FuncionariosServiceClient client = new R2D2FuncionariosServiceClient();
-        client.setDefaultUri("http://ts-dev.br.promonlogicalis.com/web-service/funcionarios");
+        client.setDefaultUri(urlR2D2);
         client.setMarshaller(marshaller);
         client.setUnmarshaller(marshaller);
         return client;
