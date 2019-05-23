@@ -18,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
 
 @EqualsAndHashCode
 public abstract class BaseServiceClient {
-    protected final int MAX_LOG_ITEMS = 5;
+    final static int MAX_LOG_ITEMS = 5;
     @Autowired
     protected RestTemplateBuilder builder;
     @Value("${coasin.ws.api_key}")

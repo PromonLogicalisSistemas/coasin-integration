@@ -48,11 +48,11 @@ public class CoasinApplication {
                 log.error(msg);
                 return;
             }
-            if ("coletores".equals(args[0].toLowerCase())) {
+            if ("coletores".equalsIgnoreCase(args[0])) {
                 coletoresClient.run();
-            } else if ("funcionarios".equals(args[0].toLowerCase())) {
+            } else if ("funcionarios".equalsIgnoreCase(args[0])) {
                 funcionariosClient.run();
-            } else if ("escalas".equals(args[0].toLowerCase())) {
+            } else if ("escalas".equalsIgnoreCase(args[0])) {
                 escalasClient.run();
             } else {
                 String msg = "Argumento " + args[0] + " não reconhecido, encerrando imediatamente";

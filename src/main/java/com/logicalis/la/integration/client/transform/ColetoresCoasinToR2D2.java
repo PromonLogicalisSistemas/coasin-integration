@@ -30,7 +30,8 @@ public class ColetoresCoasinToR2D2 implements Transformer<Coletor, com.logicalis
         to.setElementoPep(factory.createColetorCustoElementoPep(from.getColector_costo()));
         to.setDescricao(from.getDescripcion());
         to.setExcluido(from.getExcluido() != null && Boolean.parseBoolean(from.getExcluido()));
-        to.setRegistroGestor("25140240");
+        // TODO: Alterar origem pra receber re ao invés do email. to.setRegistroGestor("25140240");
+        to.setRegistroGestor(from.getEmail_gestor());
         to.setSituacao(factory.createColetorCustoSituacao(from.getSituacion()));
         to.setRegistroSolicitante("");
         to.setTipo(from.getTipo());

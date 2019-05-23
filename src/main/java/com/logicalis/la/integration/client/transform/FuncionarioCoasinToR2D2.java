@@ -27,7 +27,8 @@ public class FuncionarioCoasinToR2D2 implements Transformer<Funcionario, com.log
         com.logicalis.la.integration.client.r2d2.Funcionario to = new com.logicalis.la.integration.client.r2d2.Funcionario();
         ObjectFactory factory = new ObjectFactory();
 
-        to.setApelido(factory.createFuncionarioApelido(from.getApelido() == null ? from.getNome().split("\\s+")[0] : from.getApelido()));
+        //to.setApelido(factory.createFuncionarioApelido(from.getApelido() == null ? from.getNome().split("\\s+")[0] : from.getApelido()));
+        to.setApelido(factory.createFuncionarioApelido(from.getApelido() == null ? from.getNome() : from.getApelido()));
         to.setApontamentoViaRelogioPonto(Boolean.parseBoolean(from.getApontamento_via_relogio_ponto()));
         to.setBairro(factory.createFuncionarioBairro(from.getBairro()));
         // BairroLocalidade
@@ -91,7 +92,8 @@ public class FuncionarioCoasinToR2D2 implements Transformer<Funcionario, com.log
         to.setNomeUfLocalidade(from.getNome_uf_localidade());
         to.setNumeroLocalidade(factory.createFuncionarioNumeroLocalidade("N/A"));
         to.setRegistro(from.getRegistro());
-        to.setRegistroGestor(factory.createFuncionarioRegistroGestor("25140240"));
+        //to.setRegistroGestor(factory.createFuncionarioRegistroGestor("25140240"));
+        to.setRegistroGestor(factory.createFuncionarioRegistroGestor(from.getRegistro_gestor()));
         to.setRg("N/A");
         to.setPis(factory.createFuncionarioPis(""));
         to.setRamal(factory.createFuncionarioRamal(null));
